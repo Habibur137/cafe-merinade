@@ -1,9 +1,10 @@
 import "./App.css";
+import Restaurant from "./components/Restaurant/Restaurant";
 
 function App() {
   return (
     <div>
-      <h1>habibur rahman</h1>
+      <Restaurant />
     </div>
   );
 }
