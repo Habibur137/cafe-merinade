@@ -12,7 +12,7 @@ const Restaurant = () => {
   return (
     <div className="xl:container mx-auto">
       {/* input value grap  */}
-      <div className=" mx-auto text-center">
+      <div className=" mx-auto text-center mt-10">
         <input
           className="w-1/2 mx-auto p-2 border border-pink-200 outline-0 rounded focus:shadow-lg"
           type="text"
@@ -21,7 +21,7 @@ const Restaurant = () => {
         />
       </div>
       {/* pass meal a component */}
-      <div>
+      <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 mt-10">
         {meals
           ? meals.map((meal) => <Meal meal={meal} key={meal.idMeal}></Meal>)
           : "not found"}
