@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Meal from "../Meal/Meal";
 
 const Restaurant = () => {
   const [input, setInput] = useState("");
-
-  console.log(input);
+  const [meals, setMeals] = useState([]);
+  useEffect(() => {
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`)
+      .then((res) => res.json())
+      .then((data) => setMeals(data.meals));
+  }, [input]);
   return (
     <div className="xl:container mx-auto">
       {/* input value grap  */}
@@ -14,6 +19,12 @@ const Restaurant = () => {
           placeholder="Search For A Meal"
           onInput={(e) => setInput(e.target.value)}
         />
+      </div>
+      {/* pass meal a component */}
+      <div>
+        {meals
+          ? meals.map((meal) => <Meal meal={meal} key={meal.idMeal}></Meal>)
+          : "not found"}
       </div>
     </div>
   );
